@@ -3,8 +3,6 @@ import { galleryItems } from "./gallery-items.js";
 
 console.log(galleryItems);
 
-console.log(galleryItems);
-
 const galleryRef = document.querySelector(".gallery");
 
 function addGallery(image) {
@@ -25,27 +23,10 @@ function addGallery(image) {
 
 const imageItemsMarkup = addGallery(galleryItems);
 
-galleryRef.innerHTML = imageItemsMarkup;
+galleryRef.insertAdjacentHTML("beforeend", imageItemsMarkup);
 
-galleryRef.addEventListener("click", onImageClick);
-
-function onImageClick(e) {
-  blockStandartAction(e);
-  if (e.target.nodeName !== "IMG") {
-    return;
-  }
-
-  let lightbox = new SimpleLightbox(".gallery a", {
-    captionsData: "alt",
-    captionsDelay: 250,
-    scrollZoom: false,
-  });
-
-  if (e.target.nodeName !== "IMG") {
-    close.SimpleLightbox;
-  }
-}
-
-function blockStandartAction(e) {
-  e.preventDefault();
-}
+let lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionsDelay: 250,
+  scrollZoom: false,
+});
